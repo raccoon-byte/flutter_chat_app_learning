@@ -28,15 +28,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String text = "";
+
+  void changeText(String text) {
+    this.setState(() {
+      this.text = text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Hello World!")), body: TextInputWidget());
+        appBar: AppBar(title: Text("Hello World!")),
+        body: Column(
+            children: <Widget>[TextInputWidget(changeText), Text(text)]));
   }
 }
 
 class TextInputWidget extends StatefulWidget {
-  const TextInputWidget({Key? key}) : super(key: key);
+  late final Function(String) callback;
+
+  TextInputWidget(this.callback);
 
   @override
   State<TextInputWidget> createState() => _TextInputWidgetState();
@@ -51,6 +63,11 @@ class _TextInputWidgetState extends State<TextInputWidget> {
     controller.dispose();
   }
 
+  void click() {
+    widget.callback(controller.text);
+    controller.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -62,7 +79,7 @@ class _TextInputWidgetState extends State<TextInputWidget> {
               icon: Icon(Icons.send),
               splashColor: Colors.orange,
               tooltip: "Post message",
-              onPressed: () => {},
+              onPressed: click,
             )));
   }
 }
