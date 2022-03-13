@@ -4,6 +4,24 @@ void main() {
   runApp(const MyApp());
 }
 
+class Post {
+  String body;
+  String author;
+  int likes = 0;
+  bool userLiked = false;
+
+  Post(this.body, this.author);
+
+  void likePost() {
+    userLiked = !userLiked;
+    if (userLiked) {
+      likes += 1;
+    } else {
+      likes -= 1;
+    }
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -28,20 +46,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String text = "";
+  List<Post> posts = [];
 
   void changeText(String text) {
-    this.setState(() {
-      this.text = text;
-    });
+    this.setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Hello World!")),
-        body: Column(
-            children: <Widget>[TextInputWidget(changeText), Text(text)]));
+        body: Column(children: <Widget>[TextInputWidget(changeText)]));
   }
 }
 
