@@ -48,15 +48,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<Post> posts = [];
 
-  void changeText(String text) {
-    this.setState(() {});
+  void newPost(String text) {
+    setState(() {
+      posts.add(Post(text, "Joseph"));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Hello World!")),
-        body: Column(children: <Widget>[TextInputWidget(changeText)]));
+        body: Column(children: <Widget>[TextInputWidget(newPost)]));
   }
 }
 
