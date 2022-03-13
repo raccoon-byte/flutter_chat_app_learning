@@ -113,6 +113,12 @@ class PostList extends StatefulWidget {
 }
 
 class _PostListState extends State<PostList> {
+  void like(Function callBack) {
+    setState(() {
+      callBack();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -134,9 +140,9 @@ class _PostListState extends State<PostList> {
                 padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
               ),
               IconButton(
-                icon: Icon(Icons.thumb_up),
-                onPressed: post.likePost,
-              )
+                  icon: Icon(Icons.thumb_up),
+                  onPressed: () => like(post.likePost),
+                  color: post.userLiked ? Colors.green : Colors.black)
             ],
           )
         ]));
