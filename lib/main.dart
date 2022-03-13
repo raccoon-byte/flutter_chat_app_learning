@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(title: Text("Posts")),
         body: Column(children: <Widget>[
           Expanded(child: PostList(posts)),
-          Expanded(child: TextInputWidget(newPost))
+          TextInputWidget(newPost)
         ]));
   }
 }
