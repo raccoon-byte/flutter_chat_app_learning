@@ -5,10 +5,11 @@ import 'post.dart';
 
 class PostList extends StatefulWidget {
   final List<Post> listItems;
+
   PostList(this.listItems);
 
   @override
-  State<PostList> createState() => _PostListState();
+  _PostListState createState() => _PostListState();
 }
 
 class _PostListState extends State<PostList> {
@@ -21,9 +22,9 @@ class _PostListState extends State<PostList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: widget.listItems.length,
+      itemCount: this.widget.listItems.length,
       itemBuilder: (context, index) {
-        var post = widget.listItems[index];
+        var post = this.widget.listItems[index];
         return Card(
             child: Row(children: <Widget>[
           Expanded(

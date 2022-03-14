@@ -6,10 +6,8 @@ import 'postList.dart';
 import 'textInputWidget.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -26,8 +24,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(title: Text("Posts")),
         body: Column(children: <Widget>[
-          Expanded(child: PostList(posts)),
-          TextInputWidget(newPost)
+          Expanded(child: PostList(this.posts)),
+          TextInputWidget(this.newPost)
         ]));
   }
 }

@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 
 class TextInputWidget extends StatefulWidget {
-  late final Function(String) callback;
+  final Function(String) callback;
 
   TextInputWidget(this.callback);
 
   @override
-  State<TextInputWidget> createState() => _TextInputWidgetState();
+  _TextInputWidgetState createState() => _TextInputWidgetState();
 }
 
 class _TextInputWidgetState extends State<TextInputWidget> {

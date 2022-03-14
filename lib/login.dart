@@ -10,11 +10,11 @@ class LoginPage extends StatelessWidget {
 
 class Body extends StatefulWidget {
   @override
-  State<Body> createState() => _BodyState();
+  _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  String? name;
+  late String name;
   TextEditingController controller = TextEditingController();
 
   void click() {
