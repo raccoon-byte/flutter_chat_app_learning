@@ -20,7 +20,7 @@ class _BodyState extends State<Body> {
   void click() {
     name = controller.text;
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MyHomePage()));
+        context, MaterialPageRoute(builder: (context) => MyHomePage(name)));
   }
 
   @override
