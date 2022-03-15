@@ -28,7 +28,6 @@ class _BodyState extends State<Body> {
   }
 
   void click() {
-    Firebase.initializeApp();
     signInWithGoogle().then((user) => {
           this.user = user!,
           Navigator.push(context,

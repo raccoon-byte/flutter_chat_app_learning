@@ -43,7 +43,7 @@ class _PostListState extends State<PostList> {
               ),
               IconButton(
                   icon: Icon(Icons.thumb_up),
-                  onPressed: () => like(post.likePost),
+                  onPressed: () => this.like(() => post.likePost(widget.user)),
                   color: post.usersLiked.contains(widget.user.uid)
                       ? Colors.green
                       : Colors.black)

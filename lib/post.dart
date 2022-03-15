@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 class Post {
   String body;
-  String? author;
+  String author;
   Set usersLiked = {};
   late DatabaseReference _id;
 
