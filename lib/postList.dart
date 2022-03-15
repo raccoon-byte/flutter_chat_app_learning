@@ -16,7 +16,7 @@ class PostList extends StatefulWidget {
 
 class _PostListState extends State<PostList> {
   void like(Function callBack) {
-    setState(() {
+    this.setState(() {
       callBack();
     });
   }
