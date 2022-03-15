@@ -9,3 +9,7 @@ DatabaseReference savePost(Post post) {
   id.set(post.toJSON());
   return id;
 }
+
+void updatePost(Post post, DatabaseReference id) {
+  id.update(post.toJSON());
+}
