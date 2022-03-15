@@ -18,7 +18,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  FirebaseUser? user;
+  late FirebaseUser user;
 
   void click() {
     signInWithGoogle().then((user) => {
