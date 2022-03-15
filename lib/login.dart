@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_testing1/myHomePage.dart';
+import 'auth.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -14,35 +18,41 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  late String name;
-  TextEditingController controller = TextEditingController();
+  FirebaseUser? user;
 
   void click() {
-    name = controller.text;
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MyHomePage(name)));
+    signInWithGoogle().then((user) => {
+          this.user = user,
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MyHomePage(user.displayName)))
+        });
+  }
+
+  Widget googleLoginButton() {
+    return OutlineButton(
+        onPressed: click,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
+        splashColor: Colors.orange,
+        borderSide: BorderSide(color: Colors.orange),
+        child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image(image: AssetImage('assets/google_logo.png'), height: 35),
+                Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text('Sign in with Google',
+                        style: TextStyle(color: Colors.orange, fontSize: 25)))
+              ],
+            )));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-        alignment: Alignment.center,
-        child: Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                labelText: "Type Your Username:",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 5, color: Colors.black)),
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.done),
-                  splashColor: Colors.orange,
-                  tooltip: "Submit",
-                  onPressed: click,
-                ),
-              ),
-            )));
+    return Align(alignment: Alignment.center, child: googleLoginButton());
   }
 }
