@@ -18,15 +18,15 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  late FirebaseUser user;
+  late User user;
 
   void click() {
     signInWithGoogle().then((user) => {
-          this.user = user,
+          this.user = user!,
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => MyHomePage(user.displayName)))
+                  builder: (context) => MyHomePage(user.displayName!)))
         });
   }
 
