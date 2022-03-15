@@ -21,6 +21,12 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late User user;
 
+  @override
+  void initState() {
+    super.initState();
+    signOutGoogle();
+  }
+
   void click() {
     Firebase.initializeApp();
     signInWithGoogle().then((user) => {

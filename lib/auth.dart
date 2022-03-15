@@ -25,3 +25,7 @@ Future<User?> signInWithGoogle() async {
 
   return user;
 }
+
+void signOutGoogle() async {
+  await googleSignIn.signOut();
+}
