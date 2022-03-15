@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Post> posts = [];
 
   void newPost(String text) {
-    var post = Post(text, widget.user.displayName ?? 'placeholder');
+    var post = Post(text, widget.user.displayName!);
     post.setId(savePost(post));
     setState(() {
       posts.add(post);
