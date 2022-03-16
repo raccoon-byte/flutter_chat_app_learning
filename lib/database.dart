@@ -14,7 +14,7 @@ void updatePost(Post post, DatabaseReference id) {
   id.update(post.toJSON());
 }
 
-Future<List<Post>> getAllMessages() async {
+Future<List<Post>> getAllPosts() async {
   DatabaseEvent databaseEvent = await databaseReference.child('posts/').once();
   DataSnapshot dataSnapshot = databaseEvent.snapshot;
   List<Post> posts = [];
